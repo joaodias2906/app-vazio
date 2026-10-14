@@ -1,0 +1,20 @@
+{
+  "name": "hotel-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^18.0.7",
+    "ejs": "^5.0.1",
+    "express": "^5.3.0",
+    "express-validator": "^7.3.2",
+    "nodemailer": "^10.1.0",
+    "save": "^2.9.0"
+  }
+}

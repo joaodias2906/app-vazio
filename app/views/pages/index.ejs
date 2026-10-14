@@ -1,0 +1,126 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Farmácia Vida & Saúde</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+
+        label {
+            display: inline-block;
+            width: 100px;
+            margin-bottom: 10px;
+        }
+
+        input, textarea {
+            width: 300px;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 120px;
+            vertical-align: top;
+            resize: vertical;
+        }
+
+        .erro-msg {
+            color: red;
+            font-weight: bold;
+        }
+
+        .sucesso {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Dados do Cliente</h1>
+
+    <% if (erros && erros.length > 0) { %>
+        <div class="erro-msg">
+            <ul>
+                <% erros.forEach(function(erro) { %>
+                    <li><%= erro.msg %></li>
+                <% }) %>
+            </ul>
+        </div>
+    <% } %>
+
+    <% if (resultado && resultado.sucesso) { %>
+        <p class="sucesso"><%= resultado.sucesso %></p>
+    <% } %>
+
+    <% if (resultado && resultado.erro) { %>
+        <p class="erro-msg"><%= resultado.erro %></p>
+    <% } %>
+
+    <form action="/Dados" method="post">
+
+        <label for="DadosNome">Nome:</label>
+        <input
+            type="text"
+            name="DadosNome"
+            id="DadosNome"
+            value="<%= valores ? valores.DadosNome || '' : '' %>"
+            required
+        >
+        <br><br>
+
+        <label for="DadosTelefone">Telefone:</label>
+        <input
+            type="tel"
+            name="DadosTelefone"
+            id="DadosTelefone"
+            placeholder="11999999999"
+            value="<%= valores ? valores.DadosTelefone || '' : '' %>"
+            required
+        >
+        <br><br>
+
+        <label for="DadosEmail">E-mail:</label>
+        <input
+            type="email"
+            name="DadosEmail"
+            id="DadosEmail"
+            value="<%= valores ? valores.DadosEmail || '' : '' %>"
+            required
+        >
+        <br><br>
+
+        <label for="DadosAssunto">Assunto:</label>
+        <input
+            type="text"
+            name="DadosAssunto"
+            id="DadosAssunto"
+            maxlength="30"
+            value="<%= valores ? valores.DadosAssunto || '' : '' %>"
+            required
+        >
+        <br><br>
+
+        <label for="DadosMenssagem">Mensagem:</label>
+        <textarea
+            name="DadosMenssagem"
+            id="DadosMenssagem"
+            maxlength="3000"
+            required
+        ><%= valores ? valores.DadosMenssagem || '' : '' %></textarea>
+        <br><br>
+
+        <button type="submit">Enviar</button>
+
+    </form>
+
+</body>
+</html>
